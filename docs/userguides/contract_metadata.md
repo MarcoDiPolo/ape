@@ -77,6 +77,10 @@ This method offers complete data including factory details but requires a specia
 When working with archive nodes, Ape employs a binary search technique with `eth_getCode` to identify the deployment block, then uses block tracing (`debug_traceBlockByNumber` or `trace_replayBlockTransactions`) to reconstruct the deployment.
 This approach works with many Ethereum clients but requires archive node access and performs slower than other methods.
 
+If you use a hosted Ethereum mainnet node, the Ethereum API listings on [Chain.Love](https://www.chain.love/) distinguish plans with archive data from those with only recent state.
+To check the endpoint, call `eth_getCode` for a contract known to have had code at an old block, passing that block number instead of `latest`.
+Also check that your plan exposes the block tracing method Ape uses for your client.
+
 ### Explorer API Fallback
 
 As a final option, Ape can query blockchain explorers using plugins like `ape-etherscan`.
